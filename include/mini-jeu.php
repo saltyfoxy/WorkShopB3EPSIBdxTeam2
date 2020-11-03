@@ -39,7 +39,6 @@
 
 
 <script>
-
     var scenarios = Array.from(document.getElementsByClassName('scenario'));
     scenarios[0].classList.add('active');
     var nb_scenario = scenarios.length;
@@ -67,7 +66,5 @@
         else {
             scenarios[i].classList.add('active')
         }
-
     }
-
 </script>
