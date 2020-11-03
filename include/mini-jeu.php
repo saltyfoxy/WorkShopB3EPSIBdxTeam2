@@ -1,40 +1,50 @@
 
 <div class="scenario">
     <p>scenario 1</p>
-    <button>choix 1</button>
-    <button>choix 2</button>
+    <button onclick="next_question(3)">choix 1</button>
+    <button onclick="next_question(1)">choix 2</button>
 </div>
 
+<div class="scenario">
+    <p>scenario 2</p>
+    <button onclick="next_question(3)">choix 1</button>
+    <button onclick="next_question(1)">choix 2</button>
+</div>
+
+<div class="scenario">
+    <p>scenario 3</p>
+    <button onclick="next_question(3)">choix 1</button>
+    <button onclick="next_question(1)">choix 2</button>
+</div>
+
+<style>
+    .scenario {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+</style>
+
+
 <script>
-    const myQuestions = [
-        {
-            question: "question 1",
-            answers: {
-                a: "Douglas Crockford",
-                b: "Sheryl Sandberg",
-                c: "Brendan Eich"
-            },
-            correctAnswer: "c"
-        },
-        {
-            question: "question 2",
-            answers: {
-                a: "Node.js",
-                b: "TypeScript",
-                c: "npm"
-            },
-            correctAnswer: "c"
-        },
-        {
-            question: "question 3",
-            answers: {
-                a: "Angular",
-                b: "jQuery",
-                c: "RequireJS",
-                d: "ESLint"
-            },
-            correctAnswer: "d"
-        }
-    ];
+
+    var scenarios = Array.from(document.getElementsByClassName('scenario'));
+    scenarios[0].classList.add('active');
+    var nb_scenario = scenarios.length;
+    var score = 0;
+    var i=0;
+
+    function next_question(point) {
+        i++;
+        score += point;
+
+        scenarios.forEach( function(scenario) {
+            scenario.classList.remove('active');
+        })
+
+        scenarios[i].classList.add('active')
+
+    }
 
 </script>
