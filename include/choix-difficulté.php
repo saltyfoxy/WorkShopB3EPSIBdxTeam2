@@ -1,17 +1,7 @@
-<form method="post">
-    <?php
-    //Définition de la requête à exécuter
-    $SQLQuery="SELECT * FROM difficulte ";
-
-    //Exécution de la requête
-    $SQLResult = $dbConn->query($SQLQuery);
-
-    //Lecture du résultat renvoyé par l'exécution précédente
-    $script = '';
-    while($SQLRow = $SQLResult->fetch()){
-        $script .='<button type="submit" name="difficulté" value="'.$SQLRow['id'].'">'.$SQLRow['text'].'</button>';
-    }
-    $SQLResult->closeCursor();
-    print($script);
-    ?>
-</form>
+<div class="container">
+    <form method="post" class="row justify-content-around">
+        <button class="col-3 btn btn-success btn-lg" type="submit" name="difficulté" value="1">Facile</button>
+        <button class="col-3 btn btn-warning btn-lg" type="submit" name="difficulté" value="2">Moyen</button>
+        <button class="col-3 btn btn-danger btn-lg" type="submit" name="difficulté" value="3">Difficile</button>
+    </form>
+</div>
