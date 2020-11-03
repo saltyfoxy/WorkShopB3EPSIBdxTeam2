@@ -16,52 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `QestScenario`
+-- Table structure for table `difficulte`
 --
 
-DROP TABLE IF EXISTS `QestScenario`;
+DROP TABLE IF EXISTS `difficulte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `QestScenario` (
-  `idScenario` int(11) DEFAULT NULL,
-  `idQuestion` int(11) DEFAULT NULL,
-  KEY `QestScenario_FK` (`idScenario`),
-  KEY `QestScenario_FK_1` (`idQuestion`),
-  CONSTRAINT `QestScenario_FK` FOREIGN KEY (`idScenario`) REFERENCES `scenario` (`id`),
-  CONSTRAINT `QestScenario_FK_1` FOREIGN KEY (`idQuestion`) REFERENCES `question` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QestScenario`
---
-
-LOCK TABLES `QestScenario` WRITE;
-/*!40000 ALTER TABLE `QestScenario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QestScenario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `question`
---
-
-DROP TABLE IF EXISTS `question`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `question` (
-  `id` int(11) NOT NULL,
-  `nText` varchar(100) NOT NULL,
+CREATE TABLE `difficulte` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `question`
+-- Dumping data for table `difficulte`
 --
 
-LOCK TABLES `question` WRITE;
-/*!40000 ALTER TABLE `question` DISABLE KEYS */;
-/*!40000 ALTER TABLE `question` ENABLE KEYS */;
+LOCK TABLES `difficulte` WRITE;
+/*!40000 ALTER TABLE `difficulte` DISABLE KEYS */;
+INSERT INTO `difficulte` VALUES (1,'facile'),(2,'moyen'),(3,'difficile');
+/*!40000 ALTER TABLE `difficulte` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -72,13 +47,13 @@ DROP TABLE IF EXISTS `reponse`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reponse` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nText` varchar(100) NOT NULL,
   `points` int(11) NOT NULL,
-  `idQuestion` int(11) DEFAULT NULL,
+  `question` int(11) DEFAULT NULL,
+  `pourquoi` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `reponse_FK` (`idQuestion`),
-  CONSTRAINT `reponse_FK` FOREIGN KEY (`idQuestion`) REFERENCES `question` (`id`)
+  KEY `reponse_FK` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -99,10 +74,16 @@ DROP TABLE IF EXISTS `scenario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `scenario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) DEFAULT NULL,
-  `dificulte` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
+  `dificulte` int(11) NOT NULL,
+  `quesion` varchar(100) DEFAULT NULL,
+  `reponse` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `scenario_FK1` (`dificulte`),
+  KEY `scenario_FK` (`reponse`),
+  CONSTRAINT `scenario_FK` FOREIGN KEY (`reponse`) REFERENCES `reponse` (`id`),
+  CONSTRAINT `scenario_FK1` FOREIGN KEY (`dificulte`) REFERENCES `difficulte` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -123,7 +104,7 @@ DROP TABLE IF EXISTS `utilisateur`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -138,7 +119,7 @@ CREATE TABLE `utilisateur` (
   PRIMARY KEY (`id`),
   KEY `utilisateur_FK` (`idScenario`),
   CONSTRAINT `utilisateur_FK` FOREIGN KEY (`idScenario`) REFERENCES `scenario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,6 +128,7 @@ CREATE TABLE `utilisateur` (
 
 LOCK TABLES `utilisateur` WRITE;
 /*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
+INSERT INTO `utilisateur` VALUES (1,'bertin','maxime','maxime.bertin1@gmail.com','1997-01-30','france','pessac','33600','1','max33600',NULL,NULL);
 /*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-03 10:26:36
+-- Dump completed on 2020-11-03 15:45:32

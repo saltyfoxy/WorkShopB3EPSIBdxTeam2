@@ -1,4 +1,96 @@
-<!DOCTYPE html>
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: welcome.php");
+    exit;
+}
+ 
+// Include config file
+require_once "db_connnection.php";
+ 
+// Define variables and initialize with empty values
+$username = $password = "";
+$username_err = $password_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    // Check if username is empty
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $username = trim($_POST["username"]);
+    }
+    
+    // Check if password is empty
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter your password.";
+    } else{
+        $password = trim($_POST["password"]);
+    }
+    
+    // Validate credentials
+    if(empty($username_err) && empty($password_err)){
+        // Prepare a select statement
+        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            
+            // Set parameters
+            $param_username = $username;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Store result
+                mysqli_stmt_store_result($stmt);
+                
+                // Check if username exists, if yes then verify password
+                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                    // Bind result variables
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    if(mysqli_stmt_fetch($stmt)){
+                        if(password_verify($password, $hashed_password)){
+                            // Password is correct, so start a new session
+                            session_start();
+                            
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;                            
+                            
+                            // Redirect user to welcome page
+                            header("location: welcome.php");
+                        } else{
+                            // Display an error message if password is not valid
+                            $password_err = "The password you entered was not valid.";
+                        }
+                    }
+                } else{
+                    // Display an error message if username doesn't exist
+                    $username_err = "No account found with that username.";
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
+    // Close connection
+    mysqli_close($link);
+}
+?>
+ 
+ <!doctype html>
+<html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     
@@ -19,7 +111,6 @@
         
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap-4.5.0.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     
     <!--====== Default CSS ======-->
     <link rel="stylesheet" href="assets/css/default.css">
@@ -27,39 +118,12 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!--====== LoginCSS Style ======-->
-    <link rel="stylesheet" href="assets/css/loginForm.css">
-
-
+    
     
 </head>
 
 <body>
-    <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->    
    
-   
-    <!--====== PRELOADER PART START ======-->
-
-    <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left">
-                            <div class="ytp-spinner-circle"></div>
-                        </div>
-                        <div class="ytp-spinner-right">
-                            <div class="ytp-spinner-circle"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--====== PRELOADER PART ENDS ======-->
     
     <!--====== HEADER PART START ======-->
     
@@ -105,48 +169,67 @@
                                 <a class="main-btn" data-scroll-nav="0" href="https://uideck.com/templates/basic/" rel="nofollow">Download Now</a>
                             </div>
 
-                            <button style="margin-left: 3%;" type="button" onclick="location.href='loginForm.html'" class="btn btn-success">Connexion</button>
-                            <button style="margin-left: 3%;" type="button" onclick="location.href='registrationForm.html'" class="btn btn-warning">Inscription</button>
-
+                            <button style="margin-left: 3%;" type="button" onclick="location.href='login.php'" class="btn btn-success">Connexion</button>
+                            <button style="margin-left: 3%;" type="button" onclick="location.href='signup.php'" class="btn btn-warning">Inscription</button>
+                            
                         </nav> <!-- navbar -->
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- navbar area -->
         
-        
+        <div id="home" class="header-hero bg_cover" style="background-image: url(assets/images/banner-bg.png)">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="header-hero-content text-center">
+                            <h3 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Basic - SaaS Landing Page</h3>
+                            <h2 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">Kickstart Your SaaS or App Site</h2>
+                            <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
+                            <a href="#" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Get Started</a>
+                        </div> <!-- header hero content -->
+                    </div>
+                </div> <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-hero-image text-center wow fadeIn" data-wow-duration="1.3s" data-wow-delay="1.4s">
+                            <img src="assets/images/header-hero.png" alt="hero">
+                        </div> <!-- header hero image -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div id="particles-1" class="particles"></div>
+        </div> <!-- header hero -->
     </header>
     
     <!--====== HEADER PART ENDS ======-->
-
-
 <body>
 
-    <div id="home" class="header-hero bg_cover"  class="wrapper fadeInDown">
-        <div id="formContent">
-        <!-- Tabs Titles -->
+    <!--======= FORM PART ==========--> 
 
-        <!-- Icon -->
-            <div class="fadeIn first">
-                <img src="assets/images/logo_green_city.jpg" id="icon" alt="User Icon" />
+
+    <div class="wrapper">
+        <h2>Login</h2>
+        <p>Please fill in your credentials to login.</p>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                <span class="help-block"><?php echo $username_err; ?></span>
+            </div>    
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control">
+                <span class="help-block"><?php echo $password_err; ?></span>
             </div>
-
-        <!-- Login Form -->
-            <form>
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
-            </form>
-
-        <!-- Remind Passowrd -->
-            <div id="formFooter">
-                <a class="underlineHover" href="#">Forgot Password?</a>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Login">
             </div>
+            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+        </form>
+    </div>    
 
-        </div>
-    </div>   
-
-
+    <!--======= FORM PART END ==========--> 
     <!--====== FOOTER PART START ======-->
     
     <footer id="footer" class="footer-area pt-120">
@@ -275,8 +358,6 @@
     <!--====== Bootstrap js ======-->
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap-4.5.0.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
     <!--====== Plugins js ======-->
     <script src="assets/js/plugins.js"></script>
@@ -299,8 +380,10 @@
     
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
-    
-    
-</body>
 
+    <!--====== Ajax PHP calls ======-->
+    <script src="assets/js/ajax_php_calls.js"></script>
+    
+
+</body>
 </html>
