@@ -15,9 +15,20 @@
     <p>scenario 3</p>
     <button onclick="next_question(3)">choix 1</button>
     <button onclick="next_question(1)">choix 2</button>
+    <button onclick="next_question(1)">choix 3</button>
 </div>
 
+<form id="end">
+    <p>Votre score est de <span id="score"></span></p>
+    <p>commentaire...</p>
+    <button id="sub" type="submit">continuer</button>
+</form>
+
+
 <style>
+    #end {
+        display: none;
+    }
     .scenario {
         display: none;
     }
@@ -37,13 +48,25 @@
 
     function next_question(point) {
         i++;
+
         score += point;
+
+        console.log(i);
+        console.log(score);
+        console.log(nb_scenario);
 
         scenarios.forEach( function(scenario) {
             scenario.classList.remove('active');
         })
 
-        scenarios[i].classList.add('active')
+        if (i >= nb_scenario){
+            document.getElementById('end').style.display = "block";
+            document.getElementById('score').innerHTML = score;
+            document.getElementById('sub').value = score;
+        }
+        else {
+            scenarios[i].classList.add('active')
+        }
 
     }
 
