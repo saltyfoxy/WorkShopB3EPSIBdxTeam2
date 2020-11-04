@@ -82,13 +82,13 @@
 <!--====== START : ECRANT DE FIN ======-->
     <form id="end" class="container">
         <div class="row justify-content-around">
-            <h1 class="text-light">Votre score est de <span id="score" class="text-info"></span></h1>
+            <h1 class="text-center text-light">ECO-SCORE <br/> <span id="score"></span></h1>
         </div>
         <div class="row justify-content-around mb-4 mt-4">
             <p class="text-light" id="commentaire"></p>
         </div>
         <div class="row justify-content-around">
-            <button class="col-6 btn btn-info btn-lg shadow-lg" id="sub" type="submit">continuer</button>
+            <button class="col-6 btn btn-info btn-lg shadow-lg" id="sub" type="submit">recommencer</button>
         </div>
     </form>
 <!--====== END : ECRANT DE FIN ======-->
@@ -153,21 +153,25 @@
         if (score < 250)
         {
             document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_0.png)";
+            document.getElementById('score').innerHTML = "<span class='text-danger'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "Il y a du progrès !";
         }
         else if (score < 500)
         {
             document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_1.png)";
+            document.getElementById('score').innerHTML = "<span class='text-warning'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "C'est moyen quand même";
         }
         else if (score < 750 )
         {
             document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_2.png)";
+            document.getElementById('score').innerHTML = "<span class='text-info'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "Bon bah c'est bien";
         }
         else
         {
             document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_3.png)";
+            document.getElementById('score').innerHTML = "<span class='text-success'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "Excellent rien à dire !";
         }
 
@@ -190,7 +194,6 @@
                 document.getElementById(pourquoi).style.display = "none";
                 document.getElementById("jeu").style.display = "none";
                 document.getElementById('end').style.display = "block";
-                document.getElementById('score').innerHTML = score;
                 document.getElementById('sub').value = score;
             }, 3000)
         }
