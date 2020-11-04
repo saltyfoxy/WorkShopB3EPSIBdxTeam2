@@ -63,7 +63,7 @@
         <!--====== JEUX PART START ======-->
 
             <div class="container justify-content-around">
-                <div class="mt-150 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
+                <div class="mt-150 sak2 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
                     <div class="p-5 d-flex align-items-center filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.2); p-5; width: 100%; height: 100%">
                     <?php
                         if ( isset($_POST['difficulté']) )
@@ -92,6 +92,12 @@
                 animation-iteration-count: infinite;
                 animation-direction: alternate;
             }
+            .sak2 {
+                animation-duration: 5s;
+                animation-name: slidein2;
+                animation-iteration-count: revert;
+                animation-direction: alternate;
+            }
 
             @keyframes slidein {
                 from {
@@ -99,6 +105,15 @@
                 }
                 to {
                     box-shadow: 0 0 10px #429548;
+                }
+            }
+
+            @keyframes slidein2 {
+                from {
+                    transform: rotate3d(90, 0, 0, 30deg);
+                }
+                to {
+                    transform: rotate3d(1, 1, 1, 0deg);
                 }
             }
         </style>
