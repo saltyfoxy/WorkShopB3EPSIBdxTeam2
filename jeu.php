@@ -1,5 +1,5 @@
 <?php
-include("include/bdd.php");
+    include("include/bdd.php");
 ?>
 <!doctype html>
 <html class="no-js" lang="fr">
@@ -63,18 +63,20 @@ include("include/bdd.php");
         <!--====== JEUX PART START ======-->
 
             <div class="container justify-content-around">
-                <div class="bg-white p-5 rounded mt-150 d-flex align-items-center " style="height: 600px">
+                <div class="rounded shadow-lg " style="height: 700px;background-size: cover; background-position: center; background-image: url('assets/images/ville_base_Plan_de_travail_1.png')">
+                    <div class="rounded p-5 mt-150 d-flex align-items-center filtre-sak" style="background-color: rgba(50,50,50,0.2); p-5; width: 100%; height: 100%">
                     <?php
-                    if ( isset($_POST['difficulté']) )
-                    {
-                        $lvl = $_POST['difficulté'];
-                        include("include/mini-jeu.php");
-                    }
-                    else
-                    {
-                        include("include/choix-difficulté.php");
-                    }
+                        if ( isset($_POST['difficulté']) )
+                        {
+                            $lvl = $_POST['difficulté'];
+                            include("include/mini-jeu.php");
+                        }
+                        else
+                        {
+                            include("include/choix-difficulté.php");
+                        }
                     ?>
+                    </div>
                 </div>
             </div>
 
