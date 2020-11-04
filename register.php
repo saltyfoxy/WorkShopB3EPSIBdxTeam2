@@ -1,99 +1,53 @@
 <?php
-// Include config file
 require_once "db_connnection.php";
- 
-// Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Validate username
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = trim($_POST["username"]);
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                /* store result */
-                mysqli_stmt_store_result($stmt);
+session_start();
+//connect to database
+if(isset($_POST['register_btn']))
+{
+    $prenom=mysqli_real_escape_string($db,$_POST['prenom']);
+    $nom=mysqli_real_escape_string($db,$_POST['nom']);
+    $pays=mysqli_real_escape_string($db,$_POST['pays']);
+    $ville=mysqli_real_escape_string($db,$_POST['ville']);
+    $code_postal=mysqli_real_escape_string($db,$_POST['code_postal']);
+    $email=mysqli_real_escape_string($db,$_POST['email']);
+    $password=mysqli_real_escape_string($db,$_POST['password']);
+    $password2=mysqli_real_escape_string($db,$_POST['password2']);  
+    $query = "SELECT * FROM utilisateur WHERE prenom = '$prenom' AND nom = '$nom'";
+    $result=mysqli_query($db,$query);
+      if($result)
+      {
+     
+        if( mysqli_num_rows($result) > 0)
+        {
                 
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
-                } else{
-                    $username = trim($_POST["username"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
+                echo '<script language="javascript">';
+                echo 'alert("Username already exists")';
+                echo '</script>';
         }
-    }
-    
-    // Validate password
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
-    } else{
-        $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
-        }
-    }
-    
-    // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+          else
+          {
             
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                header("location: login.php");
-            } else{
-                echo "Something went wrong. Please try again later.";
+            if($password==$password2)
+            {           //Create User
+                $password=md5($password); //hash password before storing for security purposes
+                $sql="INSERT INTO utilisateur(prenom,nom,email,pays,ville,code_postal, password ) VALUES('$prenom','$nom','$email','$pays','$ville','$code_postal', '$password')"; 
+                mysqli_query($db,$sql);  
+                $_SESSION['message']="You are now logged in"; 
+                $_SESSION['username']=$prenom;
+                header("location:index.html");  //redirect home page
             }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-    
-    // Close connection
-    mysqli_close($link);
+            else
+            {
+                $_SESSION['message']="The two password do not match";   
+            }
+          }
+      }
 }
 ?>
- 
- <!doctype html>
+
+
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -116,6 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap-4.5.0.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     
     <!--====== Default CSS ======-->
     <link rel="stylesheet" href="assets/css/default.css">
@@ -232,37 +187,94 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </header>
     
     <!--====== HEADER PART ENDS ======-->
-<body>
-    <div class="wrapper">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
-        </form>
-    </div>  
+
+
+
+    <body>
+
+<div class="container">
+  <hgroup>
+    <h1 class="site-title" style="text-align: center; color: green;">Login, Registration, Logout</h1><br>
+  </hgroup>
+
+<br>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+  <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav center">
+        <li><a href="login.php">LogIN</a></li>
+        <li><a href="register.php">SignUp</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<main class="main-content">
+
+ <div class="col-md-6 col-md-offset-2">
+
+<?php
+    if(isset($_SESSION['message']))
+    {
+         echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+         unset($_SESSION['message']);
+    }
+?>
+<form method="post" action="register.php">
+  <table>
+     <tr>
+           <td>Prenom : </td>
+           <td><input type="text" name="prenom" class="textInput"></td>
+     </tr>
+     <tr>
+           <td>Nom : </td>
+           <td><input type="text" name="nom" class="textInput"></td>
+     </tr>
+     <tr>
+           <td>Email : </td>
+           <td><input type="email" name="email" class="textInput"></td>
+     </tr>
+     <tr>
+           <td>Pays : </td>
+           <td><input type="text" name="pays" class="textInput"></td>
+     </tr>
+     <tr>
+           <td>Ville : </td>
+           <td><input type="text" name="ville" class="textInput"></td>
+     </tr>
+     <tr>
+           <td>Code postal : </td>
+           <td><input type="text" name="code_postal" class="textInput"></td>
+     </tr>
+      <tr>
+           <td>Password : </td>
+           <td><input type="password" name="password" class="textInput"></td>
+     </tr>
+      <tr>
+           <td>Password again: </td>
+           <td><input type="password" name="password2" class="textInput"></td>
+     </tr>
+      <tr>
+           <td></td>
+           <td><input type="submit" name="register_btn" class="Register"></td>
+     </tr>
+    </table>
+
+</form>
+</div>
+
+</main>
+</div>
+
+
+
+
+<!--====== FOOTER PART START ======-->
     
-    <!--====== FOOTER PART START ======-->
-    
-    <footer id="footer" class="footer-area pt-120">
+<footer id="footer" class="footer-area pt-120">
         <div class="container">
             <div class="subscribe-area wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                 <div class="row">
@@ -388,6 +400,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!--====== Bootstrap js ======-->
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap-4.5.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
     <!--====== Plugins js ======-->
     <script src="assets/js/plugins.js"></script>

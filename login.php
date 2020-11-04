@@ -111,6 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap-4.5.0.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     
     <!--====== Default CSS ======-->
     <link rel="stylesheet" href="assets/css/default.css">
@@ -170,7 +171,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </div>
 
                             <button style="margin-left: 3%;" type="button" onclick="location.href='login.php'" class="btn btn-success">Connexion</button>
-                            <button style="margin-left: 3%;" type="button" onclick="location.href='signup.php'" class="btn btn-warning">Inscription</button>
+                            <button style="margin-left: 3%;" type="button" onclick="location.href='register.php'" class="btn btn-warning">Inscription</button>
                             
                         </nav> <!-- navbar -->
                     </div>
@@ -208,11 +209,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!--======= FORM PART ==========--> 
 
 
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+    <div class="wrapper fadeInDown">
+        <div class="fadeIn first">
+            <img src="assets/images/logo_green_city.jpg">
+        </div>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+            <div id="formContent" class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
@@ -358,6 +360,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!--====== Bootstrap js ======-->
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap-4.5.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
     <!--====== Plugins js ======-->
     <script src="assets/js/plugins.js"></script>
