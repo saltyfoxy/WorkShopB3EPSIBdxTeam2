@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="index.php">
                                 <img src="assets/images/logo.svg" alt="Logo">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,9 +102,17 @@
                             <div class="navbar-btn d-none d-sm-inline-block">
                                 <a class="main-btn" data-scroll-nav="0" href="https://uideck.com/templates/basic/" rel="nofollow">Download Now</a>
                             </div>
-
-                            <button style="margin-left: 3%;" type="button" onclick="location.href='login.php'" class="btn btn-success">Connexion</button>
-                            <button style="margin-left: 3%;" type="button" onclick="location.href='register.php'" class="btn btn-warning">Inscription</button>
+                            
+                            <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
+                            <?php if (isset($_SESSION['prenom'])): ?>
+                                 <p>Hello </p>
+                                 <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
+                            <?php else: ?>
+                                <button style="margin-left: 3%;" type="button" onclick="location.href='login.php'" class="btn btn-success">Connexion</button>
+                                <button style="margin-left: 3%;" type="button" onclick="location.href='register.php'" class="btn btn-warning">Inscription</button>
+                            <?php endif; ?>
+                                
+                            
                             
                         </nav> <!-- navbar -->
                     </div>
@@ -539,5 +547,4 @@
     
     
 </body>
-
 </html>

@@ -35,7 +35,7 @@ if(isset($_POST['register_btn']))
                 mysqli_query($db,$sql);  
                 $_SESSION['message']="You are now logged in"; 
                 $_SESSION['username']=$prenom;
-                header("location:index.html");  //redirect home page
+                header("location:index.php");  //redirect home page
             }
             else
             {
@@ -117,7 +117,7 @@ if(isset($_POST['register_btn']))
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="index.php">
                                 <img src="assets/images/logo.svg" alt="Logo">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

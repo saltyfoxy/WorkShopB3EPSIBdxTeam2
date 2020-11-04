@@ -1,94 +1,45 @@
 <?php
-// Initialize the session
-session_start();
- 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
-    exit;
-}
- 
-// Include config file
 require_once "db_connnection.php";
- 
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = $username;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-                
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
-                            // Redirect user to welcome page
-                            header("location: welcome.php");
-                        } else{
-                            // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
-                        }
-                    }
-                } else{
-                    // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
+session_start();
+if(  isset($_SESSION['email']) )
+{
+  header("location:index.php");
+  die();
+}
+//connect to database
+if($db)
+{
+  if(isset($_POST['login_btn']))
+  {
+      $email=mysqli_real_escape_string($db,$_POST['email']);
+      $password=mysqli_real_escape_string($db,$_POST['password']);
+      $password=md5($password); //Remember we hashed password before storing last time
+      $sql="SELECT * FROM utilisateur WHERE email='$email' AND password='$password'";
+      $result=mysqli_query($db,$sql);
+      
+      if($result)
+      {
+     
+        if( mysqli_num_rows($result)>=1)
+        {
+            $_SESSION['message']="Vous êtes à présent connecté(e)";
+            $_SESSION['email']=$email;
+            header("location:index.php");
         }
-    }
-    
-    // Close connection
-    mysqli_close($link);
+       else
+       {
+              $_SESSION['message']="Email ou mot de pass incorrect";
+       }
+      }
+  }
 }
 ?>
- 
- <!doctype html>
+
+
+
+
+
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -119,12 +70,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!--====== Login CSS ======-->
+    <link rel="stylesheet" href="assets/css/login.css">
+
     
     
 </head>
 
 <body>
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->    
    
+   
+    <!--====== PRELOADER PART START ======-->
+
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== PRELOADER PART ENDS ======-->
     
     <!--====== HEADER PART START ======-->
     
@@ -134,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="index.php">
                                 <img src="assets/images/logo.svg" alt="Logo">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -204,37 +182,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </header>
     
     <!--====== HEADER PART ENDS ======-->
-<body>
 
-    <!--======= FORM PART ==========--> 
-
-
-    <div class="wrapper fadeInDown">
-        <div class="fadeIn first">
-            <img src="assets/images/logo_green_city.jpg">
-        </div>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div id="formContent" class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-        </form>
-    </div>    
-
-    <!--======= FORM PART END ==========--> 
-    <!--====== FOOTER PART START ======-->
     
-    <footer id="footer" class="footer-area pt-120">
+
+<div class="login center">
+ <div class="login-form center">
+<?php
+    if(isset($_SESSION['message']))
+    {
+         echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+         unset($_SESSION['message']);
+    }
+?>
+<form class="center" method="post" action="login.php">
+  <table class="column center">
+     <tr class="column">
+           <td>Email : </td>
+           <td><input type="email" name="email" class="textInput"></td>
+     </tr>
+      <tr class="column">
+           <td>Password : </td>
+           <td><input type="password" name="password" class="textInput"></td>
+     </tr>
+      <tr class="column">
+           <td><input class="center" type="submit" name="login_btn" class="Log In"></td>
+     </tr>
+ 
+</table>
+</form>
+</div>
+
+</div>
+</div>
+
+
+<!--====== FOOTER PART START ======-->
+    
+<footer id="footer" class="footer-area pt-120">
         <div class="container">
             <div class="subscribe-area wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                 <div class="row">
@@ -388,6 +372,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!--====== Ajax PHP calls ======-->
     <script src="assets/js/ajax_php_calls.js"></script>
     
-
+    
 </body>
 </html>
