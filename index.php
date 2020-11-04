@@ -94,6 +94,17 @@
                             <div class="navbar-btn d-none d-sm-inline-block">
                                 <a class="main-btn" data-scroll-nav="0" href="jeu.php" rel="nofollow">Lancer le jeu</a>
                             </div>
+
+                            <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
+                            <?php if (isset($_SESSION['prenom'])): ?>
+                                    <p>Hello </p>
+                                    <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
+                            <?php else: ?>
+                                    <button style="margin-left: 3%;" type="button" onclick="location.href='login.php'" class="btn btn-success">Connexion</button>
+                                    <button style="margin-left: 3%;" type="button" onclick="location.href='register.php'" class="btn btn-warning">Inscription</button>
+                            <?php endif; ?>
+
+
                         </nav> <!-- navbar -->
                     </div>
                 </div> <!-- row -->
