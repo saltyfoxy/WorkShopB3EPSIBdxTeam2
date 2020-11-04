@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="fr">
 
 <head>
     <meta charset="utf-8">
     
     <!--====== Title ======-->
-    <title>Basic - SaaS Landing Page</title>
+    <title>GreenCity - Le Serious Game</title>
     
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="assets/images/logo_flavicon.png" type="image/png">
         
     <!--====== Animate CSS ======-->
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -27,8 +27,6 @@
     
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
-
-    
     
 </head>
 
@@ -67,8 +65,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.php">
-                                <img src="assets/images/logo.svg" alt="Logo">
+                            <a  href="index.html">
+                                <img class="home_logo" src="assets/images/logo-greencity.png" alt="Logo">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
@@ -79,41 +77,23 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">Home</a>
+                                        <a class="page-scroll" href="#home">Accueil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#features">Features</a>
+                                        <a class="page-scroll" href="#features">Fonctionnalités</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#about">About</a>
+                                        <a class="page-scroll" href="#about">Àpropos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#facts">Why</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#team">Team</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#blog">Blog</a>
+                                        <a class="page-scroll" href="#footer">Contact</a>
                                     </li>
                                 </ul>
                             </div> <!-- navbar collapse -->
                             
                             <div class="navbar-btn d-none d-sm-inline-block">
-                                <a class="main-btn" data-scroll-nav="0" href="https://uideck.com/templates/basic/" rel="nofollow">Download Now</a>
+                                <a class="main-btn" data-scroll-nav="0" href="jeu.php" rel="nofollow">Lancer le jeu</a>
                             </div>
-                            
-                            <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
-                            <?php if (isset($_SESSION['prenom'])): ?>
-                                 <p>Hello </p>
-                                 <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
-                            <?php else: ?>
-                                <button style="margin-left: 3%;" type="button" onclick="location.href='login.php'" class="btn btn-success">Connexion</button>
-                                <button style="margin-left: 3%;" type="button" onclick="location.href='register.php'" class="btn btn-warning">Inscription</button>
-                            <?php endif; ?>
-                                
-                            
-                            
                         </nav> <!-- navbar -->
                     </div>
                 </div> <!-- row -->
@@ -125,10 +105,10 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="header-hero-content text-center">
-                            <h3 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Basic - SaaS Landing Page</h3>
-                            <h2 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">Kickstart Your SaaS or App Site</h2>
-                            <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
-                            <a href="#" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Get Started</a>
+                            <h3 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Green<span class="title_city">City</span></h3>
+                            <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">Rebâtissez le monde de demain.</h2>
+                            <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Serious Game à destination de tous, rendez-vous juste en dessous.</p>
+                            <a href="jeu.php" style="height: 100%; width: 300px" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Lancer GreenCity - Le Jeu</a>
                         </div> <!-- header hero content -->
                     </div>
                 </div> <!-- row -->
@@ -154,19 +134,19 @@
                 <div class="col-lg-12">
                     <div class="brand-logo d-flex align-items-center justify-content-center justify-content-md-between">
                         <div class="single-logo mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <img src="assets/images/brand-1.png" alt="brand">
+                            <a href="https://www.epsi.fr/" target="_blank" >
+                                <img src="assets/images/brand-1.png" alt="brand">
+                            </a>
                         </div> <!-- single logo -->
                         <div class="single-logo mt-30 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                            <img src="assets/images/brand-2.png" alt="brand">
+                            <a href="https://www.wis.fr/" target="_blank">
+                                <img src="assets/images/brand-2.png" alt="brand">
+                            </a>
                         </div> <!-- single logo -->
                         <div class="single-logo mt-30 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.3s">
-                            <img src="assets/images/brand-3.png" alt="brand">
-                        </div> <!-- single logo -->
-                        <div class="single-logo mt-30 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                            <img src="assets/images/brand-4.png" alt="brand">
-                        </div> <!-- single logo -->
-                        <div class="single-logo mt-30 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                            <img src="assets/images/brand-5.png" alt="brand">
+                            <a href="http://www.fse.gouv.fr/" target="_blank">
+                                <img src="assets/images/brand-3.png" alt="brand">
+                            </a>
                         </div> <!-- single logo -->
                     </div> <!-- brand logo -->
                 </div>
@@ -184,7 +164,7 @@
                 <div class="col-lg-10">
                     <div class="section-title text-center pb-40">
                         <div class="line m-auto"></div>
-                        <h3 class="title">Clean and simple design, <span> Comes with everything you need to get started!</span></h3>
+                        <h3 class="title">Une solution simple, <span> venez créer un</span> <h3 class="title">monde meilleur <span> tout en prenant du plaisir.</span></h3></h3>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -197,9 +177,8 @@
                             <i class="lni lni-baloon"></i>
                         </div>
                         <div class="services-content mt-30">
-                            <h4 class="services-title"><a href="#">Clean</a></h4>
-                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
-                            <a class="more" href="#">Learn More <i class="lni lni-chevron-right"></i></a>
+                            <h4 class="services-title"><a href="#">Simple</a></h4>
+                            <p class="text">Une interface simple, utilisable par tous, permettant d'y voir clair sur la stratégie de GreenCity</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -211,9 +190,8 @@
                             <i class="lni lni-cog"></i>
                         </div>
                         <div class="services-content mt-30">
-                            <h4 class="services-title"><a href="#">Robust</a></h4>
-                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
-                            <a class="more" href="#">Learn More <i class="lni lni-chevron-right"></i></a>
+                            <h4 class="services-title"><a href="#">Pédagogue</a></h4>
+                            <p class="text">Une façon efficace de donner aux plus jeunes la fibre du respect de l'environnement, en y présentant les principes clés.</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -225,9 +203,8 @@
                             <i class="lni lni-bolt-alt"></i>
                         </div>
                         <div class="services-content mt-30">
-                            <h4 class="services-title"><a href="#">Powerful</a></h4>
-                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
-                            <a class="more" href="#">Learn More <i class="lni lni-chevron-right"></i></a>
+                            <h4 class="services-title"><a href="#">Participative</a></h4>
+                            <p class="text">GreenCity reverse 60% de ses bénéfices à une société de reforestation intervenant principalement à Madagascar.</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -239,96 +216,11 @@
     
     <!--====== ABOUT PART START ======-->
     
-    <section id="about" class="about-area pt-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-content mt-50 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="section-title">
-                            <div class="line"></div>
-                            <h3 class="title">Quick & Easy <span>to Use Bootstrap Template</span></h3>
-                        </div> <!-- section title -->
-                        <p class="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seiam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.</p>
-                        <a href="#" class="main-btn">Try it Free</a>
-                    </div> <!-- about content -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="assets/images/about1.svg" alt="about">
-                    </div> <!-- about image -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-        <div class="about-shape-1">
-            <img src="assets/images/about-shape-1.svg" alt="shape">
-        </div>
-    </section>
-    
-    <!--====== ABOUT PART ENDS ======-->
-    
-    <!--====== ABOUT PART START ======-->
-    
-    <section class="about-area pt-70">
-        <div class="about-shape-2">
-            <img src="assets/images/about-shape-2.svg" alt="shape">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 order-lg-last">
-                    <div class="about-content mt-50 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="section-title">
-                            <div class="line"></div>
-                            <h3 class="title">Modern design <span> with Essential Features</span></h3>
-                        </div> <!-- section title -->
-                        <p class="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seiam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.</p>
-                        <a href="#" class="main-btn">Try it Free</a>
-                    </div> <!-- about content -->
-                </div>
-                <div class="col-lg-6 order-lg-first">
-                    <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="assets/images/about2.svg" alt="about">
-                    </div> <!-- about image -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
 
-
-    <!--====== ABOUT PART START ======-->
-    
-    <section class="about-area pt-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-content mt-50 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="section-title">
-                            <div class="line"></div>
-                            <h3 class="title"><span>Crafted for</span> SaaS, App and Software Landing Page</h3>
-                        </div> <!-- section title -->
-                        <p class="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seiam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.</p>
-                        <a href="#" class="main-btn">Try it Free</a>
-                    </div> <!-- about content -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="assets/images/about3.svg" alt="about">
-                    </div> <!-- about image -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-        <div class="about-shape-1">
-            <img src="assets/images/about-shape-1.svg" alt="shape">
-        </div>
-    </section>
-    
-    <!--====== ABOUT PART ENDS ======-->
-
-    
-    <!--====== ABOUT PART ENDS ======-->
     
     <!--====== VIDEO COUNTER PART START ======-->
     
-    <section id="facts" class="video-counter pt-70">
+    <section id="about" class="video-counter pt-70">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -349,24 +241,24 @@
                         <div class="counter-content">
                             <div class="section-title">
                                 <div class="line"></div>
-                                <h3 class="title">Cool facts <span> about this app</span></h3>
+                                <h3 class="title">L'histoire<span> de GreenCity</span></h3>
                             </div> <!-- section title -->
-                            <p class="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seiam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                            <p class="text">GreenCity est l'idée de plusieurs étudiants de Wis et Epsi...........???</p>
                         </div> <!-- counter content -->
                         <div class="row no-gutters">
                             <div class="col-4">
                                 <div class="single-counter counter-color-1 d-flex align-items-center justify-content-center">
                                     <div class="counter-items text-center">
-                                        <span class="count"><span class="counter">125</span>K</span>
-                                        <p class="text">Downloads</p>
+                                        <span class="count"><span class="counter">250</span>K</span>
+                                        <p class="text">Téléchargements</p>
                                     </div>
                                 </div> <!-- single counter -->
                             </div>
                             <div class="col-4">
                                 <div class="single-counter counter-color-2 d-flex align-items-center justify-content-center">
                                     <div class="counter-items text-center">
-                                        <span class="count"><span class="counter">87</span>K</span>
-                                        <p class="text">Active Users</p>
+                                        <span class="count"><span class="counter">30</span></span>
+                                        <p class="text">partenaires</p>
                                     </div>
                                 </div> <!-- single counter -->
                             </div>
@@ -399,14 +291,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="subscribe-content mt-45">
-                            <h2 class="subscribe-title">Subscribe Our Newsletter <span>get reguler updates</span></h2>
+                            <h2 class="subscribe-title">Abonnez-vous à notre newsletter<span> pour ne rien rater de notre actualité.</span></h2>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="subscribe-form mt-50">
                             <form action="#">
-                                <input type="text" placeholder="Enter eamil">
-                                <button class="main-btn">Subscribe</button>
+                                <input type="text" placeholder="Votre e-mail ?">
+                                <button class="main-btn">S'abonner</button>
                             </form>
                         </div>
                     </div>
@@ -417,9 +309,9 @@
                     <div class="col-lg-4 col-md-6 col-sm-8">
                         <div class="footer-about mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                             <a class="logo" href="#">
-                                <img src="assets/images/logo.svg" alt="logo">
+                                <img style="background-color: rgba(255, 255, 255, 0.4)" src="assets/images/logo-greencity.png" alt="logo">
                             </a>
-                            <p class="text">Lorem ipsum dolor sit amet consetetur sadipscing elitr, sederfs diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
+                            <p class="text">GreenCity, le serious game qui fait participer tout le monde. Une solution pour bâtir un monde meilleur.</p>
                             <ul class="social">
                                 <li><a href="#"><i class="lni lni-facebook-filled"></i></a></li>
                                 <li><a href="#"><i class="lni lni-twitter-filled"></i></a></li>
@@ -428,44 +320,31 @@
                             </ul>
                         </div> <!-- footer about -->
                     </div>
-                    <div class="col-lg-5 col-md-7 col-sm-7">
+                    <div class="col-lg-5 col-md-7 col-sm-7" style="margin-top: 30px;" >
                         <div class="footer-link d-flex mt-50 justify-content-md-between">
-                            <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="footer-title">
-                                    <h4 class="title">Quick Link</h4>
-                                </div>
-                                <ul class="link">
-                                    <li><a href="#">Road Map</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Refund Policy</a></li>
-                                    <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="#">Pricing</a></li>
-                                </ul>
-                            </div> <!-- footer wrapper -->
+                            <!-- footer wrapper -->
                             <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
                                 <div class="footer-title">
                                     <h4 class="title">Resources</h4>
                                 </div>
                                 <ul class="link">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Page</a></li>
-                                    <li><a href="#">Portfolio</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#home">Acceuil</a></li>
+                                    <li><a href="#features">Fonctionnalités</a></li>
+                                    <li><a href="#about">Àpropos</a></li>
+                                    <li><a href="#footer">Contact</a></li>
                                 </ul>
                             </div> <!-- footer wrapper -->
                         </div> <!-- footer link -->
                     </div>
-                    <div class="col-lg-3 col-md-5 col-sm-5">
+                    <div class="col-lg-3 col-md-5 col-sm-5" style="margin-top: 30px;">
                         <div class="footer-contact mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
                             <div class="footer-title">
-                                <h4 class="title">Contact Us</h4>
+                                <h4 class="title">Contactez-nous</h4>
                             </div>
                             <ul class="contact">
-                                <li>+809272561823</li>
-                                <li>info@gmail.com</li>
-                                <li>www.yourweb.com</li>
-                                <li>123 Stree New York City , United <br> States Of America 750.</li>
+                                <li>greencity@gmail.com</li>
+                                <li>www.GreenCity.com</li>
+                                <li>114 Rue Lucien Faure , Bordeaux <br> France, 33 000.</li>
                             </ul>
                         </div> <!-- footer contact -->
                     </div>
@@ -514,7 +393,6 @@
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-3.5.1-min.js"></script>
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     
     <!--====== Bootstrap js ======-->
     <script src="assets/js/popper.min.js"></script>
@@ -541,10 +419,7 @@
     
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
-
-    <!--====== Ajax PHP calls ======-->
-    <script src="assets/js/ajax_php_calls.js"></script>
-    
     
 </body>
+
 </html>

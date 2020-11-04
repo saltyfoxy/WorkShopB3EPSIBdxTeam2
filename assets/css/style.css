@@ -43,7 +43,12 @@ body {
   box-sizing: border-box; }
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+}
+
+.home_logo{
+  width: 50%;
+}
 
 a:focus,
 input:focus,
@@ -147,7 +152,7 @@ p {
   transition: all 0.4s ease-out 0s;
   background: -webkit-linear-gradient(left, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
   background: -o-linear-gradient(left, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
-  background: linear-gradient(to right, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
+  background: linear-gradient(90deg, rgba(37,98,5,1) 0%, rgba(34,90,145,1) 100%);
   background-size: 200%; }
   .main-btn:hover {
     color: #fff;
@@ -739,7 +744,7 @@ p {
   line-height: 45px;
   background: -webkit-linear-gradient(left, #fe8464 0%, #fe6e9a 50%, #fe8464 100%);
   background: -o-linear-gradient(left, #fe8464 0%, #fe6e9a 50%, #fe8464 100%);
-  background: linear-gradient(to right, #fe8464 0%, #fe6e9a 50%, #fe8464 100%);
+  background: linear-gradient(90deg, rgba(37,98,5,1) 0%, rgba(34,90,145,1) 100%);
   background-size: 200%; }
   .navbar-btn .main-btn:hover {
     color: #fff;
@@ -783,10 +788,13 @@ p {
     @media only screen and (min-width: 576px) and (max-width: 767px) {
       .header-hero-content .header-sub-title {
         font-size: 30px; } }
+
   .header-hero-content .header-title {
-    font-size: 38px;
-    font-weight: 700;
-    color: #fff; }
+    font-size: 55px !important;
+    font-weight: normal;
+    color: #009640;
+    font-family: SaintMedard;
+  }
     @media (max-width: 767px) {
       .header-hero-content .header-title {
         font-size: 24px; } }
@@ -794,7 +802,7 @@ p {
       .header-hero-content .header-title {
         font-size: 30px; } }
   .header-hero-content .text {
-    color: #fff;
+    color:#000000a3;
     margin-top: 30px; }
   .header-hero-content .main-btn {
     margin-top: 40px; }
@@ -809,6 +817,14 @@ p {
   @media (max-width: 767px) {
     .header-hero-image {
       padding-top: 30px; } }
+
+.title_city{
+  color: #2D2E83;
+}
+
+.title_city_2{
+  color:#009640;
+}
 
 /*===========================
       03.BRAND css 
