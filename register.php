@@ -78,6 +78,10 @@ if(isset($_POST['register_btn']))
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/login.css">
+
+
     
     
 </head>
@@ -190,31 +194,14 @@ if(isset($_POST['register_btn']))
 
 
 
-    <body>
+<body>
 
-<div class="container">
-  <hgroup>
-    <h1 class="site-title" style="text-align: center; color: green;">Login, Registration, Logout</h1><br>
-  </hgroup>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
 
-<br>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-  <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav center">
-        <li><a href="login.php">LogIN</a></li>
-        <li><a href="register.php">SignUp</a></li>
-      </ul>
-
+  <div class="fadeIn first">
+      <img src="assets/images/logo_green_city.jpg" id="icon" alt="User Icon" />
     </div>
-  </div>
-</nav>
-
-
-<main class="main-content">
-
- <div class="col-md-6 col-md-offset-2">
 
 <?php
     if(isset($_SESSION['message']))
@@ -223,50 +210,39 @@ if(isset($_POST['register_btn']))
          unset($_SESSION['message']);
     }
 ?>
-<form method="post" action="register.php">
-  <table>
+<form class="center" method="post" action="register.php">
+    <table class="column center full-size">
      <tr>
-           <td>Prenom : </td>
-           <td><input type="text" name="prenom" class="textInput"></td>
-     </tr>
-     <tr>
-           <td>Nom : </td>
-           <td><input type="text" name="nom" class="textInput"></td>
+        <td><input type="text" name="prenom" class="fadeIn second" placeholder="Prénom"></td>
      </tr>
      <tr>
-           <td>Email : </td>
-           <td><input type="email" name="email" class="textInput"></td>
+        <td><input type="text" name="nom" class="fadeIn second" placeholder="Nom"></td>
      </tr>
      <tr>
-           <td>Pays : </td>
-           <td><input type="text" name="pays" class="textInput"></td>
+        <td><input type="email" name="email" class="fadeIn second" placeholder="E-mail"></td>
      </tr>
      <tr>
-           <td>Ville : </td>
-           <td><input type="text" name="ville" class="textInput"></td>
+        <td><input type="text" name="pays" class="fadeIn second" placeholder="Pays"></td>
      </tr>
      <tr>
-           <td>Code postal : </td>
-           <td><input type="text" name="code_postal" class="textInput"></td>
+        <td><input type="text" name="ville" class="fadeIn second" placeholder="Ville"></td>
      </tr>
-      <tr>
-           <td>Password : </td>
-           <td><input type="password" name="password" class="textInput"></td>
+     <tr>
+        <td><input type="text" name="code_postal" class="fadeIn second" placeholder="Code Postal"></td>
      </tr>
-      <tr>
-           <td>Password again: </td>
-           <td><input type="password" name="password2" class="textInput"></td>
+     <tr>
+        <td><input type="password" name="password" class="fadeIn second" placeholder="Mot de passe"></td>
      </tr>
-      <tr>
-           <td></td>
-           <td><input type="submit" name="register_btn" class="Register"></td>
+     <tr>
+        <td><input type="password" name="password2" class="fadeIn second" placeholder="Vérification du mot de passe"></td>
      </tr>
-    </table>
+     <tr>
+        <td><input type="submit" name="register_btn" class="fadeIn fourth" value="Log In"></td>
+     </tr>
+   </table>
 
-</form>
-</div>
-
-</main>
+        </form>
+    </div>
 </div>
 
 

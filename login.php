@@ -185,8 +185,13 @@ if($db)
 
     
 
-<div class="login center">
- <div class="login-form center">
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+  <div class="fadeIn first">
+      <img src="assets/images/logo_green_city.jpg" id="icon" alt="User Icon" />
+    </div>
+
 <?php
     if(isset($_SESSION['message']))
     {
@@ -195,25 +200,27 @@ if($db)
     }
 ?>
 <form class="center" method="post" action="login.php">
-  <table class="column center">
+  <table class="column center full-size">
      <tr class="column">
-           <td>Email : </td>
-           <td><input type="email" name="email" class="textInput"></td>
+           <td><input type="email" name="email" class="fadeIn second" placeholder="e-mail"></td>
      </tr>
       <tr class="column">
-           <td>Password : </td>
-           <td><input type="password" name="password" class="textInput"></td>
+           <td><input type="password" name="password" class="fadeIn third" placeholder="mot de passe"></td>
      </tr>
       <tr class="column">
-           <td><input class="center" type="submit" name="login_btn" class="Log In"></td>
+           <td><input class="fadeIn fourth " type="submit" name="login_btn" value="Log In"></td>
      </tr>
  
-</table>
+    </table>
 </form>
+<!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover a-login" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
 </div>
 
-</div>
-</div>
 
 
 <!--====== FOOTER PART START ======-->
