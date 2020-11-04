@@ -1,8 +1,10 @@
 <div class="container" id="jeu">
     <div class="row">
-        <div class="col-4">
-            <img src="assets/images/prof.png" style="position: absolute; width: 425px; bottom: -128px">
+
+        <div class="col-4 d-flex align-items-center">
+            <img id="prof" src="assets/images/prof.png" style="bottom: 0">
         </div>
+
         <div class="col-8">
             <?php
 
@@ -28,7 +30,7 @@
                 //===== Stocke le résultat dans un tableau
                 $SQL_Result = $dbConn->query($SQL_Scenario);
 
-                //===== Parcoure le tableau pour afficher les scenarios
+                //===== Parcoure le tableau pour afficher les scénarios
                 $script = '';
                 while($SQL_Row = $SQL_Result->fetch())
                 {
@@ -36,7 +38,7 @@
                     $script .= '<p class="text-center bg-white rounded shadow-lg p-4 mb-5 ">'.$SQL_Row['question'].'</p>';
                     $script .= '<p class="text-center text-light">Choisis une réponse :</p>';
 
-                    //===== Affichage des differente réponse possible
+                    //===== Affichage des différente réponse possible
                     $SQL_Reponse = "SELECT * FROM reponse where question =". $SQL_Row['id'];// Requête
                     $SQL_Result_2 = $dbConn->query($SQL_Reponse);//Stocke le résultat dans un tableau
                     while($SQL_Row_2 = $SQL_Result_2->fetch())//Parcoure le tableau pour afficher les reponses
@@ -45,7 +47,7 @@
                     }
                     $script .= '</div>';
 
-                    //===== Affichage des differents commentaires pour chaque réponse
+                    //===== Affichage des différents commentaires pour chaque réponse
                     $SQL_Pourquoi = "SELECT * FROM reponse where question =". $SQL_Row['id'];// Requête
                     $SQL_Result_3 = $dbConn->query($SQL_Pourquoi);//Stocke le résultat dans un tableau
                     while($SQL_Row_3 = $SQL_Result_3->fetch())//Parcoure le tableau pour afficher les reponses
@@ -70,14 +72,14 @@
                 $SQL_Result_3->closeCursor();
                 print($script);
 
-
             ?>
         </div>
+
     </div>
 </div>
 
 
-<!--====== Formulaire qui s'affiche à la fin du jeu ======-->
+<!--====== START : ECRANT DE FIN ======-->
     <form id="end" class="container">
         <div class="row justify-content-around">
             <h1 class="text-light">Votre score est de <span id="score" class="text-info"></span></h1>
@@ -89,7 +91,7 @@
             <button class="col-6 btn btn-info btn-lg shadow-lg" id="sub" type="submit">continuer</button>
         </div>
     </form>
-<!--====== Formulaire qui s'affiche à la fin du jeu ======-->
+<!--====== END : ECRANT DE FIN ======-->
 
 <!--====== CSS ======-->
 <style type="text/css">
@@ -117,20 +119,34 @@
     .faux {
         box-shadow: 0 0 11px rgba(255, 0, 0, 1)
     }
+    #prof {
+        animation-duration: 2s;
+        animation-name: hautbas;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    @keyframes hautbas {
+        from {
+            transform: translate(0,10px);
+        }
+        to {
+            transform: translate(0,-10px);
+        }
+    }
 </style>
 
 <!--====== JAVASCRIPT ======-->
 <script type="application/javascript">
-    var scenarios = Array.from(document.getElementsByClassName('scenario'));
-    scenarios[0].classList.add('active');
+    //===== Initialisation des variable
+    var scenarios   = Array.from(document.getElementsByClassName('scenario'));
+    scenarios[0].classList.add('active'); // Affiche le premier élément du tableau
     var nb_scenario = scenarios.length;
-    var score = 0;
-    var i=0;
+    var score       = 0;
+    var i           =0;
 
     function next_question(point, pourquoi)
     {
         i++;
-
         score += point;
 
         //===== Plusieurs modification selon le score
@@ -149,6 +165,7 @@
 
         document.getElementById(pourquoi).style.display = "block";
 
+        //===== Affiche l'ecran de fin quand tous les scénarios on était joué sinon continue
         if (i >= nb_scenario)
         {
             setTimeout(function () {
