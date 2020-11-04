@@ -63,7 +63,7 @@
         <!--====== JEUX PART START ======-->
 
             <div class="container justify-content-around">
-                <div class="shadow mt-150 sak background" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
+                <div class="shadow mt-150 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
                     <div class="p-5 d-flex align-items-center filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.2); p-5; width: 100%; height: 100%">
                     <?php
                         if ( isset($_POST['difficulté']) )
@@ -84,7 +84,7 @@
             .background {
                 background-size: cover;
                 background-position: center;
-                background-image: url('assets/images/ville_base_Plan_de_travail_1.png')
+                background-image: url('assets/images/ville.png')
             }
             .sak {
                 animation-duration: 10s;

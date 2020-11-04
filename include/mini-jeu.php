@@ -151,19 +151,32 @@
 
         //===== Plusieurs modification selon le score
         if (score < 250)
+        {
+            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_0.png)";
             document.getElementById('commentaire').innerHTML = "Il y a du progrès !";
+        }
         else if (score < 500)
+        {
+            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_1.png)";
             document.getElementById('commentaire').innerHTML = "C'est moyen quand même";
+        }
         else if (score < 750 )
+        {
+            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_2.png)";
             document.getElementById('commentaire').innerHTML = "Bon bah c'est bien";
+        }
         else
+        {
+            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_3.png)";
             document.getElementById('commentaire').innerHTML = "Excellent rien à dire !";
+        }
 
         scenarios.forEach( function(scenario) {
             scenario.classList.remove('active');
         })
 
         document.getElementById(pourquoi).style.display = "block";// Affiche un commentaire selon la réponse
+        //===== Change l'image de la prof selon la réponse
         if(vf === 0 )
             document.getElementById('prof').src = "assets/images/prof_vrai.png";
         else
