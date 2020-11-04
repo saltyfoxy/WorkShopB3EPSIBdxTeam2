@@ -43,7 +43,7 @@
                     $SQL_Result_2 = $dbConn->query($SQL_Reponse);//Stocke le résultat dans un tableau
                     while($SQL_Row_2 = $SQL_Result_2->fetch())//Parcoure le tableau pour afficher les reponses
                     {
-                        $script .= '<p class="text-center bg-white rounded p-4 mt-3 mb-3 pointer" onclick="next_question('.$SQL_Row_2['points'].', '.$SQL_Row_2['id'].')">'.$SQL_Row_2['nText'].'</p>';
+                        $script .= '<p class="text-center bg-white rounded p-4 mt-3 mb-3 pointer" onclick="next_question('.$SQL_Row_2['points'].', '.$SQL_Row_2['id'].','.$SQL_Row_2['VF'].')">'.$SQL_Row_2['nText'].'</p>';
                     }
                     $script .= '</div>';
 
@@ -84,7 +84,7 @@
         <div class="row justify-content-around">
             <h1 class="text-light">Votre score est de <span id="score" class="text-info"></span></h1>
         </div>
-        <div class="row justify-content-around">
+        <div class="row justify-content-around mb-4 mt-4">
             <p class="text-light" id="commentaire"></p>
         </div>
         <div class="row justify-content-around">
@@ -144,7 +144,7 @@
     var score       = 0;
     var i           =0;
 
-    function next_question(point, pourquoi)
+    function next_question(point, pourquoi,vf)
     {
         i++;
         score += point;
@@ -163,7 +163,12 @@
             scenario.classList.remove('active');
         })
 
-        document.getElementById(pourquoi).style.display = "block";
+        document.getElementById(pourquoi).style.display = "block";// Affiche un commentaire selon la réponse
+        if(vf === 0 )
+            document.getElementById('prof').src = "assets/images/prof_vrai.png";
+        else
+            document.getElementById('prof').src = "assets/images/prof_faux.png";
+
 
         //===== Affiche l'ecran de fin quand tous les scénarios on était joué sinon continue
         if (i >= nb_scenario)
@@ -179,6 +184,7 @@
         else
         {
             setTimeout(function () {
+                document.getElementById('prof').src = "assets/images/prof.png";
                 document.getElementById(pourquoi).style.display = "none";
                 scenarios[i].classList.add('active')
             }, 3000);
