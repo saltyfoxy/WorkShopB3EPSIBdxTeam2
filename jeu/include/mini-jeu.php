@@ -90,7 +90,7 @@
             <p class="text-light" id="commentaire"></p>
         </div>
         <div class="row justify-content-around">
-            <button class="col-6 btn btn-info btn-lg shadow-lg" id="sub" type="submit">recommencer</button>
+            <button class="col-3 btn btn-info btn-lg shadow-lg" id="sub" type="submit">REJOUER</button>
         </div>
     </form>
 <!--====== END : ECRANT DE FIN ======-->
@@ -204,7 +204,7 @@
         else
         {
             setTimeout(function () {
-                document.getElementById('prof').src = "assets/images/prof.png";
+                document.getElementById('prof').src = "../assets/images/prof.png";
                 document.getElementById(pourquoi).style.display = "none";
                 scenarios[i].classList.add('active')
             }, 3000);
