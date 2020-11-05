@@ -9,7 +9,7 @@
         /*
          * En cas d'erreur, gestion d'une exception (à voir plus tard)
          */
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 ?>

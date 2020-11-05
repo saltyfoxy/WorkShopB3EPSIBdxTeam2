@@ -6,10 +6,13 @@
             <button class="col-6 btn btn-light btn-lg shadow-lg shadow rounded-pill"  onclick="affiche_lvl()" >Jouer</button>
         </div>
         <div class="row justify-content-around mb-4 mt-4">
-            <button class="col-6 btn btn-light btn-lg shadow-lg shadow rounded-pill" >Liste des scores</button>
+            <button class="col-6 btn btn-light btn-lg shadow-lg shadow rounded-pill" onclick="affiche_score()">Liste des scores</button>
         </div>
         <div class="row justify-content-around">
             <a class="col-6 btn btn-info btn-lg shadow-lg shadow rounded-pill disabled" href="#" >Espace enseignant</a>
+        </div>
+        <div class="row justify-content-around mt-4" >
+            <a class="text-danger stretched-link" href="#">quiter le jeu</a>
         </div>
     </div>
 <!--- END : MENU --->
@@ -32,11 +35,57 @@
     </div>
 <!--- END : CHOIX NIVEAU --->
 
+<!--- START : SCORE --->
+    <div class="container d-none" id="score">
+        <h2 class="text-center text-light m-4">Liste des scores</h2>
+        <table class="table table-borderless bg-light rounded">
+            <thead>
+            <tr>
+                <th scope="col">Score</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Nom</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $sql = "SELECT * FROM utilisateur ORDER BY score DESC";
+                    $result = $dbConn->query($sql);
+
+                    if ($result->num_rows > 0)
+                    {
+                        echo "";
+                        // output data of each row
+                        while($row = $result->fetch_assoc())
+                        {
+                            echo "<tr>
+                                    <td>".$row["score"]."</td>
+                                    <td>".$row["prenom"]."</td>
+                                    <td>".$row["nom"]."</td>
+                                  </tr>";
+                        }
+                    }
+                    else
+                    {
+                        echo "<tr>
+                                <td class='text-center' colspan=\"3\">0 résultats</td>
+                              </tr>";
+                    }
+                    $result->closeCursor();
+                ?>
+            </tbody>
+        </table>
+        <div class="row justify-content-around mt-5" >
+            <button class="col-3 btn btn-light rounded-pill" onclick="affiche_menu()">MENU</button>
+        </div>
+    </div>
+<!--- END : SCORE --->
+
 <!--====== JAVASCRIPT ======-->
 <script type="application/javascript">
     //===== Initialisation des variable
     var menu   = document.getElementById('menu');
     var lvl   = document.getElementById('lvl');
+    var score   = document.getElementById('score');
 
     menu.classList.remove('d-none');
 
@@ -44,6 +93,7 @@
     function affiche_menu()
     {
         lvl.classList.add('d-none');
+        score.classList.add('d-none');
         menu.classList.remove('d-none');
     }
 
@@ -51,6 +101,15 @@
     function affiche_lvl()
     {
         menu.classList.add('d-none');
+        score.classList.add('d-none');
         lvl.classList.remove('d-none');
+    }
+
+    //===== Affiche les scores
+    function affiche_score()
+    {
+        menu.classList.add('d-none');
+        lvl.classList.add('d-none');
+        score.classList.remove('d-none');
     }
 </script>

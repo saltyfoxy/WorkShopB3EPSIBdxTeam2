@@ -64,21 +64,70 @@
 
             <div class="container justify-content-around">
                 <div class="mt-150 sak2 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
-                    <div class=" row p-5 d-flex align-items-center filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.3); p-5; width: 100%; height: 100%">
+                    <div class="p-5 d-flex align-items-center justify-content-around filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.3); p-5; width: 100%; height: 100%">
 
-                        <form method="post" class="col-6 justify-content-around">
-                            <h2 class="text-center text-light m-4">Connectez-vous</h2>
-                            <p class="text-center text-light m-4">Connectez-vous pour avoir accès au jeu</p>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Adresse E-mail</label>
-                                <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Entrez vôtre e-mail">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Mot de passe</label>
-                                <input type="password" class="form-control" placeholder="mot de passe">
-                            </div>
-                            <button type="submit" class="btn btn-primary">se connecter</button>
-                        </form>
+                            <form method="post" id="connexion" class="col-8 d-none">
+                                <h3 class="text-center text-light m-4">Connectez-vous</h3>
+                                <p class="text-center text-light m-4">Connectez-vous pour avoir accès au jeu</p>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Entrez vôtre e-mail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="mot de passe">
+                                </div>
+                                <div class="row justify-content-around" >
+                                    <button type="submit" class="btn btn-primary btn-lg shadow-lg rounded-pill">se connecter</button>
+                                </div>
+                                <div class="row justify-content-around" >
+                                    <a class="text-dark" href="#inscription" onclick="affiche_inscription()">s'inscrire</a>
+                                </div>
+                            </form>
+
+                            <form method="post" id="inscription" class="col-8 d-none">
+                                <h3 class="text-center text-light m-4">Inscrivez-vous</h3>
+                                <p class="text-center text-light m-4">Inscrivez-vous dès maintenant !</p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" aria-describedby="nom" placeholder="nom">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" aria-describedby="prenom" placeholder="prénom">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" aria-describedby="email" placeholder="e-mail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="mot de passe">
+                                </div>
+                                <div class="row justify-content-around" >
+                                    <button type="submit" class="btn btn-primary btn-lg shadow-lg rounded-pill">s'inscrire</button>
+                                </div>
+                                <div class="row justify-content-around" >
+                                    <a class="text-dark" href="#connexion" onclick="affiche_connexion()">se connecter</a>
+                                </div>
+                            </form>
+
+                            <!--====== JAVASCRIPT ======-->
+                            <script type="application/javascript">
+                                //===== Initialisation des variable
+                                var connexion   = document.getElementById('connexion');
+                                var inscription = document.getElementById('inscription');
+
+                                connexion.classList.remove('d-none');
+
+                                //===== Affiche connexion
+                                function affiche_connexion()
+                                {
+                                    inscription.classList.add('d-none');
+                                    connexion.classList.remove('d-none');
+                                }
+
+                                //===== Affiche le choix de niveau
+                                function affiche_inscription()
+                                {
+                                    connexion.classList.add('d-none');
+                                    inscription.classList.remove('d-none');
+                                }
+                            </script>
 
                     </div>
                 </div>
