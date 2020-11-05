@@ -92,7 +92,7 @@
                             </div> <!-- navbar collapse -->
                             
                             <div class="navbar-btn d-none d-sm-inline-block">
-                                <a class="main-btn" data-scroll-nav="0" href="jeu.php" rel="nofollow">Lancer le jeu</a>
+                                <a class="main-btn" data-scroll-nav="0" href="jeu/jeu.php" rel="nofollow">Lancer le jeu</a>
                             </div>
 
                             <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
@@ -119,7 +119,7 @@
                             <h3 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Green<span class="title_city">City</span></h3>
                             <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">Rebâtissez le monde de demain.</h2>
                             <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Serious Game à destination de tous, rendez-vous juste en dessous.</p>
-                            <a href="jeu.php" style="height: 100%; width: 300px" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Lancer GreenCity - Le Jeu</a>
+                            <a href="jeu/jeu.php" style="height: 100%; width: 300px" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Lancer GreenCity - Le Jeu</a>
                         </div> <!-- header hero content -->
                     </div>
                 </div> <!-- row -->

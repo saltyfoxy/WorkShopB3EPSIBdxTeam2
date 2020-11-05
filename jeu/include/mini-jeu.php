@@ -3,7 +3,7 @@
         <div class="row">
 
             <div class="col-4 d-flex align-items-center">
-                <img id="prof" src="assets/images/prof.png" style="bottom: 0">
+                <img id="prof" src="../assets/images/prof.png" style="bottom: 0">
             </div>
 
             <div class="col-8">
@@ -155,25 +155,25 @@
         //===== Plusieurs modification selon le score
         if (score < 250)
         {
-            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_0.png)";
+            document.getElementById('bg_ville').style.backgroundImage = "url(../assets/images/ville_0.png)";
             document.getElementById('score').innerHTML = "<span class='text-danger'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "Il y a du progrès !";
         }
         else if (score < 500)
         {
-            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_1.png)";
+            document.getElementById('bg_ville').style.backgroundImage = "url(../assets/images/ville_1.png)";
             document.getElementById('score').innerHTML = "<span class='text-warning'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "C'est moyen quand même";
         }
         else if (score < 750 )
         {
-            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_2.png)";
+            document.getElementById('bg_ville').style.backgroundImage = "url(../assets/images/ville_2.png)";
             document.getElementById('score').innerHTML = "<span class='text-info'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "Bon bah c'est bien";
         }
         else
         {
-            document.getElementById('bg_ville').style.backgroundImage = "url(assets/images/ville_3.png)";
+            document.getElementById('bg_ville').style.backgroundImage = "url(../assets/images/ville_3.png)";
             document.getElementById('score').innerHTML = "<span class='text-success'>"+score+"</span>";
             document.getElementById('commentaire').innerHTML = "Excellent rien à dire !";
         }
@@ -186,9 +186,9 @@
         document.getElementById(pourquoi).style.display = "block";// Affiche un commentaire selon la réponse
         //===== Change l'image de la prof selon la réponse
         if(vf === 0 )
-            document.getElementById('prof').src = "assets/images/prof_vrai.png";
+            document.getElementById('prof').src = "../assets/images/prof_vrai.png";
         else
-            document.getElementById('prof').src = "assets/images/prof_faux.png";
+            document.getElementById('prof').src = "../assets/images/prof_faux.png";
 
 
         //===== Affiche l'ecran de fin quand tous les scénarios on était joué sinon continue
