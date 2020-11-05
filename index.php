@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/logo_flavicon.png" type="image/png">
+        <link rel="shortcut icon" href="assets/images/logo_flavicon.png" type="image/png">
         
     <!--====== Animate CSS ======-->
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -90,10 +90,7 @@
                                     </li>
                                 </ul>
                             </div> <!-- navbar collapse -->
-                            
-                            <div class="navbar-btn d-none d-sm-inline-block">
-                                <a class="main-btn" data-scroll-nav="0" href="jeu/jeu.php" rel="nofollow">Lancer le jeu</a>
-                            </div>
+
 
                             <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
                             <?php if (isset($_SESSION['prenom'])): ?>
@@ -119,7 +116,7 @@
                             <h3 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Green<span class="title_city">City</span></h3>
                             <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">Rebâtissez le monde de demain.</h2>
                             <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Serious Game à destination de tous, rendez-vous juste en dessous.</p>
-                            <a href="jeu/jeu.php" style="height: 100%; width: 300px" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Lancer GreenCity - Le Jeu</a>
+                            <a href="jeu" style="height: 100%; width: 300px" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Lancer GreenCity - Le Jeu</a>
                         </div> <!-- header hero content -->
                     </div>
                 </div> <!-- row -->
@@ -189,7 +186,7 @@
                         </div>
                         <div class="services-content mt-30">
                             <h4 class="services-title"><a href="#">Simple</a></h4>
-                            <p class="text">Une interface simple, utilisable par tous, permettant d'y voir clair sur la stratégie de GreenCity</p>
+                            <p class="text">Une interface simple, utilisable par tous, permettant d'y voir clair sur la stratégie de GreenCity.</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -252,36 +249,11 @@
                         <div class="counter-content">
                             <div class="section-title">
                                 <div class="line"></div>
-                                <h3 class="title">L'histoire<span> de GreenCity</span></h3>
+                                <h3 class="title">L'histoire<span> de GreenCity et sa </span> présensation.</h3>
                             </div> <!-- section title -->
-                            <p class="text">GreenCity est l'idée de plusieurs étudiants de Wis et Epsi...........???</p>
+                            <p style="font-size: 18px;" class="text">GreenCity est l'idée de plusieurs étudiants Epsi et Wis Bordeaux. Né en fin 2020 la solution GreenCity se veut être originale, moderne et participative. <br/><br/>Avec ce projet nommé GreenCity nous espèrons travailler main à main avec les professeurs et élèves d'écoles, afin de maximiser nos chances de donner à une nouvelle génération une vision de la planète plus écologique.<br/><br/>Toujours pas convaincu ? Alors regarde cette petite vidéo de présentation de notre jeu GreenCity, juste à ta gauche. :) </p>
                         </div> <!-- counter content -->
-                        <div class="row no-gutters">
-                            <div class="col-4">
-                                <div class="single-counter counter-color-1 d-flex align-items-center justify-content-center">
-                                    <div class="counter-items text-center">
-                                        <span class="count"><span class="counter">250</span>K</span>
-                                        <p class="text">Téléchargements</p>
-                                    </div>
-                                </div> <!-- single counter -->
-                            </div>
-                            <div class="col-4">
-                                <div class="single-counter counter-color-2 d-flex align-items-center justify-content-center">
-                                    <div class="counter-items text-center">
-                                        <span class="count"><span class="counter">30</span></span>
-                                        <p class="text">partenaires</p>
-                                    </div>
-                                </div> <!-- single counter -->
-                            </div>
-                            <div class="col-4">
-                                <div class="single-counter counter-color-3 d-flex align-items-center justify-content-center">
-                                    <div class="counter-items text-center">
-                                        <span class="count"><span class="counter">4.8</span></span>
-                                        <p class="text">User Rating</p>
-                                    </div>
-                                </div> <!-- single counter -->
-                            </div>
-                        </div> <!-- row -->
+                         <!-- row -->
                     </div> <!-- counter wrapper -->
                 </div>
             </div> <!-- row -->
@@ -320,7 +292,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-8">
                         <div class="footer-about mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                             <a class="logo" href="#">
-                                <img style="background-color: rgba(255, 255, 255, 0.4)" src="assets/images/logo-greencity.png" alt="logo">
+                                <img src="assets/images/logo-greencity.png" alt="logo">
                             </a>
                             <p class="text">GreenCity, le serious game qui fait participer tout le monde. Une solution pour bâtir un monde meilleur.</p>
                             <ul class="social">
