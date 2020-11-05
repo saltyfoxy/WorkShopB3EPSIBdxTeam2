@@ -1,5 +1,6 @@
 <?php
     include("include/bdd.php");
+    include("include/login.php");
 ?>
 <!doctype html>
 <html class="no-js" lang="fr">
@@ -66,17 +67,24 @@
                 <div class="mt-150 sak2 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
                     <div class="p-5 d-flex align-items-center justify-content-around filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.3); p-5; width: 100%; height: 100%">
 
-                            <form method="post" id="connexion" class="col-8 d-none">
+                            <form method="get" id="connexion" class="col-8 d-none">
                                 <h3 class="text-center text-light m-4">Connectez-vous</h3>
                                 <p class="text-center text-light m-4">Connectez-vous pour avoir accès au jeu</p>
+                                <?php
+                                    if(isset($_SESSION['message']))
+                                    {
+                                        echo "<div class=\"text-danger\">".$_SESSION['message']."</div>";
+                                        unset($_SESSION['message']);
+                                    }
+                                ?>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Entrez vôtre e-mail">
+                                    <input type="email" name="email" class="form-control" placeholder="Entrez vôtre e-mail">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="mot de passe">
+                                    <input type="password" name="password" class="form-control" placeholder="mot de passe">
                                 </div>
                                 <div class="row justify-content-around" >
-                                    <button type="submit" class="btn btn-primary btn-lg shadow-lg rounded-pill">se connecter</button>
+                                    <button type="submit" name="login_btn" value="Log In" class="btn btn-primary btn-lg shadow-lg rounded-pill">se connecter</button>
                                 </div>
                                 <div class="row justify-content-around" >
                                     <a class="text-dark" href="#inscription" onclick="affiche_inscription()">s'inscrire</a>

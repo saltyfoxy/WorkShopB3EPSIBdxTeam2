@@ -12,7 +12,7 @@
             <a class="col-6 btn btn-info btn-lg shadow-lg shadow rounded-pill disabled" href="#" >Espace enseignant</a>
         </div>
         <div class="row justify-content-around mt-4" >
-            <a class="text-danger stretched-link" href="#">quiter le jeu</a>
+            <a class="text-danger" href="include/logout.php">quiter le jeu</a>
         </div>
     </div>
 <!--- END : MENU --->
@@ -38,6 +38,7 @@
 <!--- START : SCORE --->
     <div class="container d-none" id="score">
         <h2 class="text-center text-light m-4">Liste des scores</h2>
+        <p class="text-center text-light m-4">Les habitants de la ville comptent sur toi pour améliorer son eco-score.</p>
         <table class="table table-borderless bg-light rounded">
             <thead>
             <tr>
