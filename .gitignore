@@ -1,2 +1,4 @@
 db_connection.php
+include/bdd.php
+db_scores.php
 jeu/include/bdd.php
