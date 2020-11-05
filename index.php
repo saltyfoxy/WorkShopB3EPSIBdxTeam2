@@ -93,16 +93,6 @@
                             </div> <!-- navbar collapse -->
 
 
-                            <?php
-                            if (isset($_SESSION['email'])){
-                                print ('<a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>');}
-                            else
-                            {print ("<button style=\"margin-left: 3%;\" type=\"button\" onclick=\"location.href='login.php'\" class=\"btn btn-success\">Connexion</button>
-                                <button style=\"margin-left: 3%;\" type=\"button\" onclick=\"location.href='register.php'\" class=\"btn btn-warning\">Inscription</button>");
-                            }
-                            ?>
-
-
                         </nav> <!-- navbar -->
                     </div>
                 </div> <!-- row -->
