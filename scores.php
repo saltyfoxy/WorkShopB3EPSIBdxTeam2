@@ -140,7 +140,7 @@
                
             <?php
             
-            require "../WorkShop-B3/db_connection.php";
+            require "../WorkShop-B3/db_scores.php";
 
             $sql = "SELECT * FROM utilisateur ORDER BY score DESC";
             $result = $conn->query($sql);
