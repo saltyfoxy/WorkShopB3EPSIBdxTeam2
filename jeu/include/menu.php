@@ -59,7 +59,7 @@
                         while($row = $result->fetch())
                         {
                             echo "<tr>
-                                    <td>".$row["score"]."</td>
+                                    <td>".$row["score"]."%</td>
                                     <td>".$row["prenom"]."</td>
                                     <td>".$row["nom"]."</td>
                                   </tr>";

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_GET['login_btn']))
+    if(isset($_POST['login_btn']))
     {
         $email=$_POST['email'];
         $password=$_POST['password'];
