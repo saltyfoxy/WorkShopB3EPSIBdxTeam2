@@ -41,8 +41,7 @@
       <![endif]-->
 
 
-        <!--====== PRELOADER PART START ======-->
-
+        <!--====== START : PRELOADER PART  ======-->
             <div class="preloader">
                 <div class="loader">
                     <div class="ytp-spinner">
@@ -59,17 +58,15 @@
                     </div>
                 </div>
             </div>
+        <!--====== END : PRELOADER PART ======-->
 
-        <!--====== PRELOADER PART ENDS ======-->
-
-        <!--====== JEUX PART START ======-->
-
+        <!--====== START : FORMULAIRES ======-->
             <div class="container justify-content-around">
                 <div class="mt-150 sak2 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
                     <div class="p-5 d-flex align-items-center justify-content-around filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.3); p-5; width: 100%; height: 100%">
 
                         <!--====== START : FROM CONNEXION ======-->
-                            <form method="get" id="connexion" class="col-8 d-none">
+                            <form method="post" id="connexion" class="col-8 d-none">
                                 <h3 class="text-center text-light m-4">Connectez-vous</h3>
                                 <p class="text-center text-light m-4">Connectez-vous pour avoir accès au jeu</p>
                                 <?php
@@ -90,7 +87,7 @@
                                     <button type="submit" name="login_btn" value="Log In" class="btn btn-primary btn-lg shadow-lg rounded-pill">se connecter</button>
                                 </div>
                                 <div class="row justify-content-around mt-3" ><!--====== Bouton formulaire inscription ======-->
-                                    <button class="btn btn-sm btn-outline-dark" onclick="affiche_inscription()">s'inscrire</button>
+                                    <button type="button" y class="btn btn-sm btn-outline-dark" onclick="affiche_inscription()">s'inscrire</button>
                                 </div>
                             </form>
                         <!--====== END : FROM CONNEXION ======-->
@@ -116,15 +113,6 @@
                                 <div class="form-group"><!--====== E-mail ======-->
                                     <input type="email" class="form-control" name="email" placeholder="E-mail">
                                 </div>
-                                <div class="form-group"><!--====== Pays ======-->
-                                    <input type="text" class="form-control" name="pays" placeholder="Pays">
-                                </div>
-                                <div class="form-group"><!--====== Ville ======-->
-                                    <input type="text" class="form-control" name="ville" placeholder="Ville">
-                                </div>
-                                <div class="form-group"><!--====== Code Postal ======-->
-                                    <input type="text" class="form-control" name="code_postal" placeholder="Code Postal">
-                                </div>
                                 <div class="form-group"><!--====== Mot de passe ======-->
                                     <input type="password" class="form-control" name="password" placeholder="Mot de passe">
                                 </div>
@@ -135,12 +123,12 @@
                                     <button type="submit" name="register_btn" value="Log In" class="btn btn-primary btn-lg shadow-lg rounded-pill">s'inscrire</button>
                                 </div>
                                 <div class="row justify-content-around mt-1" ><!--====== Bouton formulaire connexion ======-->
-                                    <button class="btn btn-sm btn-outline-dark" onclick="affiche_connexion()">se connecter</button>
+                                    <button type="button" class="btn btn-sm btn-outline-dark" onclick="affiche_connexion()">se connecter</button>
                                 </div>
                             </form>
                         <!--====== END : FROM INSCRIPTION ======-->
 
-                        <!--====== JAVASCRIPT ======-->
+                        <!--====== JAVASCRIPT EN PLUS ======-->
                         <script type="application/javascript">
                             //===== Initialisation des variable
                             var connexion   = document.getElementById('connexion');
@@ -162,52 +150,51 @@
                                 inscription.classList.remove('d-none');
                             }
                         </script>
+                        <!--====== CSS EN PLUS ======-->
+                        <style>
+                            .background {
+                                background-size: cover;
+                                background-position: center;
+                                background-image: url('../assets/images/ville.png')
+                            }
+                            .sak {
+                                animation-duration: 3s;
+                                animation-name: slidein;
+                                animation-iteration-count: infinite;
+                                animation-direction: alternate;
+                            }
+                            .sak2 {
+                                animation-duration: 5s;
+                                animation-name: slidein2;
+                                animation-iteration-count: revert;
+                                animation-direction: alternate;
+                            }
+
+                            @keyframes slidein {
+                                from {
+                                    box-shadow: 0 0 75px #fff;
+                                }
+                                to {
+                                    box-shadow: 0 0 10px #429548;
+                                }
+                            }
+
+                            @keyframes slidein2 {
+                                from {
+                                    transform: rotate3d(90, 0, 0, 30deg);
+                                }
+                                to {
+                                    transform: rotate3d(1, 1, 1, 0deg);
+                                }
+                            }
+                        </style>
 
                     </div>
                 </div>
             </div>
+        <!--====== END : FORMULAIRES ======-->
 
-            <style>
-                .background {
-                    background-size: cover;
-                    background-position: center;
-                    background-image: url('../assets/images/ville.png')
-                }
-                .sak {
-                    animation-duration: 3s;
-                    animation-name: slidein;
-                    animation-iteration-count: infinite;
-                    animation-direction: alternate;
-                }
-                .sak2 {
-                    animation-duration: 5s;
-                    animation-name: slidein2;
-                    animation-iteration-count: revert;
-                    animation-direction: alternate;
-                }
-
-                @keyframes slidein {
-                    from {
-                        box-shadow: 0 0 75px #fff;
-                    }
-                    to {
-                        box-shadow: 0 0 10px #429548;
-                    }
-                }
-
-                @keyframes slidein2 {
-                    from {
-                        transform: rotate3d(90, 0, 0, 30deg);
-                    }
-                    to {
-                        transform: rotate3d(1, 1, 1, 0deg);
-                    }
-                }
-            </style>
-
-        <!--====== JEUX PART ENDS ======-->
-
-        <!--====== BUBULE PART START ======-->
+        <!--====== BUBULE ======-->
         <div id="particles-1" class="particles"></div>
 
         <!--====== Jquery js ======-->

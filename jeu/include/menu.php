@@ -39,7 +39,7 @@
     <div class="container d-none" id="score">
         <h2 class="text-center text-light m-4">Liste des scores</h2>
         <p class="text-center text-light m-4">Les habitants de la ville comptent sur toi pour améliorer son eco-score.</p>
-        <table class="table table-borderless bg-light rounded">
+        <table class="table table-borderless bg-light rounded" >
             <thead>
             <tr>
                 <th scope="col">Score</th>
@@ -52,11 +52,11 @@
                     $sql = "SELECT * FROM utilisateur ORDER BY score DESC";
                     $result = $dbConn->query($sql);
 
-                    if ($result->num_rows > 0)
+                    if ($result->fetchColumn() > 0)
                     {
                         echo "";
                         // output data of each row
-                        while($row = $result->fetch_assoc())
+                        while($row = $result->fetch())
                         {
                             echo "<tr>
                                     <td>".$row["score"]."</td>

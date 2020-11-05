@@ -6,6 +6,13 @@
         header("location:connexion-inscription.php");
         die();
     }
+    if(isset($_POST['score']))
+    {
+        $email = $_SESSION['email'];
+        $score=$_POST['score'];
+        $query = "UPDATE utilisateur SET score = $score  WHERE email ='$email'";
+        $dbConn->query($query);
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="fr">
