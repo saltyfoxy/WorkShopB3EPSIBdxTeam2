@@ -82,7 +82,7 @@
 
 
 <!--====== START : ECRANT DE FIN ======-->
-    <form id="end" class="container">
+    <form id="end" class="container" method="post">
         <div class="row justify-content-around">
             <h1 class="text-center text-light">ECO-SCORE <br/> <span id="score"></span></h1>
         </div>
@@ -90,7 +90,7 @@
             <p class="text-light" id="commentaire"></p>
         </div>
         <div class="row justify-content-around">
-            <button class="col-3 btn btn-info btn-lg shadow-lg" id="sub" type="submit">REJOUER</button>
+            <button class="col-3 btn btn-info btn-lg shadow-lg" id="sub" type="submit" name="score">CONTINUER</button>
         </div>
     </form>
 <!--====== END : ECRANT DE FIN ======-->

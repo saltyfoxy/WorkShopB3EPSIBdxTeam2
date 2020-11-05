@@ -64,20 +64,18 @@
 
             <div class="container justify-content-around">
                 <div class="mt-150 sak2 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
-                    <div class="p-5 d-flex align-items-center filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.5); p-5; width: 100%; height: 100%">
-                        <div class="container">
-                            <h2 class="text-center text-light m-4">Bienvenue dans GreenCity</h2>
-                            <p class="text-center text-light m-4">Les habitants de la ville comptent sur toi pour améliorer son eco-score.</p>
-                            <div class="row justify-content-around">
-                                <a class="col-6 btn btn-light btn-lg shadow-lg shadow rounded-pill" href="jeu.php" >Jouer</a>
-                            </div>
-                            <div class="row justify-content-around mb-4 mt-4">
-                                <a class="col-6 btn btn-light btn-lg shadow-lg shadow rounded-pill" href="#" >Liste des scores</a>
-                            </div>
-                            <div class="row justify-content-around">
-                                <a class="col-6 btn btn-info btn-lg shadow-lg shadow rounded-pill disabled" href="#" >Espace enseignant</a>
-                            </div>
-                        </div>
+                    <div class="p-5 d-flex align-items-center filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.3); p-5; width: 100%; height: 100%">
+                        <?php
+                            if ( isset($_POST['difficulté']) )
+                            {
+                                $lvl = $_POST['difficulté'];
+                                include("include/mini-jeu.php");
+                            }
+                            else
+                            {
+                                include("include/menu.php");
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
