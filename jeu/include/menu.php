@@ -27,7 +27,7 @@
             <button class="col-6 btn btn-danger btn-lg shadow-lg shadow rounded-pill" type="submit" name="difficulté" value="3">Difficile</button>
         </form>
         <div class="row justify-content-around mt-5" >
-            <a class="col-3 btn btn-light rounded-pill" href="#menu" onclick="affiche_menu()">MENU</a>
+            <button class="col-3 btn btn-light rounded-pill" onclick="affiche_menu()">MENU</button>
         </div>
     </div>
 <!--- END : CHOIX NIVEAU --->

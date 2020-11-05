@@ -3,39 +3,39 @@
 
 <head>
     <meta charset="utf-8">
-    
+
     <!--====== Title ======-->
     <title>GreenCity - Le Serious Game</title>
-    
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/logo_flavicon.png" type="image/png">
-        
+
     <!--====== Animate CSS ======-->
     <link rel="stylesheet" href="assets/css/animate.css">
-                
+
     <!--====== Line Icons CSS ======-->
     <link rel="stylesheet" href="assets/css/LineIcons.2.0.css">
-        
+
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="assets/css/bootstrap-4.5.0.min.css">
-    
+
     <!--====== Default CSS ======-->
     <link rel="stylesheet" href="assets/css/default.css">
-    
+
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
 </head>
 
 <body>
     <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->    
-   
-   
+  <![endif]-->
+
+
     <!--====== PRELOADER PART START ======-->
 
     <div class="preloader">
@@ -56,9 +56,9 @@
     </div>
 
     <!--====== PRELOADER PART ENDS ======-->
-    
+
     <!--====== HEADER PART START ======-->
-    
+
     <header class="header-area">
         <div class="navbar-area">
             <div class="container">
@@ -107,7 +107,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- navbar area -->
-        
+
         <div id="home" class="header-hero bg_cover" style="background-image: url(assets/images/banner-bg.png)">
             <div class="container">
                 <div class="row justify-content-center">
@@ -117,6 +117,8 @@
                             <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">Rebâtissez le monde de demain.</h2>
                             <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Serious Game à destination de tous, rendez-vous juste en dessous.</p>
                             <a href="jeu" style="height: 100%; width: 300px" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Lancer GreenCity - Le Jeu</a>
+                            <br>
+                            <a href="scores.php" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s"> Voir le tableau des scores</a>
                         </div> <!-- header hero content -->
                     </div>
                 </div> <!-- row -->
@@ -131,11 +133,11 @@
             <div id="particles-1" class="particles"></div>
         </div> <!-- header hero -->
     </header>
-    
+
     <!--====== HEADER PART ENDS ======-->
-    
+
     <!--====== BRAMD PART START ======-->
-    
+
     <div class="brand-area pt-90">
         <div class="container">
             <div class="row">
@@ -161,11 +163,11 @@
             </div>   <!-- row -->
         </div> <!-- container -->
     </div>
-    
+
     <!--====== BRAMD PART ENDS ======-->
-    
+
     <!--====== SERVICES PART START ======-->
-    
+
     <section id="features" class="services-area pt-120">
         <div class="container">
             <div class="row justify-content-center">
@@ -219,15 +221,15 @@
             </div> <!-- row -->
         </div> <!-- container -->
     </section>
-    
-    <!--====== SERVICES PART ENDS ======-->
-    
-    <!--====== ABOUT PART START ======-->
-    
 
-    
+    <!--====== SERVICES PART ENDS ======-->
+
+    <!--====== ABOUT PART START ======-->
+
+
+
     <!--====== VIDEO COUNTER PART START ======-->
-    
+
     <section id="about" class="video-counter pt-70">
         <div class="container">
             <div class="row">
@@ -259,15 +261,15 @@
             </div> <!-- row -->
         </div> <!-- container -->
     </section>
-    
+
     <!--====== VIDEO COUNTER PART ENDS ======-->
-    
 
-    
 
-    
+
+
+
     <!--====== FOOTER PART START ======-->
-    
+
     <footer id="footer" class="footer-area pt-120">
         <div class="container">
             <div class="subscribe-area wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -347,17 +349,17 @@
         </div> <!-- container -->
         <div id="particles-2"></div>
     </footer>
-    
+
     <!--====== FOOTER PART ENDS ======-->
-    
+
     <!--====== BACK TOP TOP PART START ======-->
 
     <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
 
-    <!--====== BACK TOP TOP PART ENDS ======-->   
-    
+    <!--====== BACK TOP TOP PART ENDS ======-->
+
     <!--====== PART START ======-->
-    
+
 <!--
     <section class="">
         <div class="container">
@@ -367,7 +369,7 @@
         </div>
     </section>
 -->
-    
+
     <!--====== PART ENDS ======-->
 
 
@@ -376,33 +378,33 @@
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-3.5.1-min.js"></script>
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    
+
     <!--====== Bootstrap js ======-->
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap-4.5.0.min.js"></script>
-    
+
     <!--====== Plugins js ======-->
     <script src="assets/js/plugins.js"></script>
-    
+
     <!--====== Counter Up js ======-->
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
-    
 
-    
+
+
     <!--====== Scrolling Nav js ======-->
     <script src="assets/js/jquery.easing.min.js"></script>
     <script src="assets/js/scrolling-nav.js"></script>
-    
+
     <!--====== wow js ======-->
     <script src="assets/js/wow.min.js"></script>
-    
+
     <!--====== Particles js ======-->
     <script src="assets/js/particles.min.js"></script>
-    
+
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
-    
+
 </body>
 
 </html>
