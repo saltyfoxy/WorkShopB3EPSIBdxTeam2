@@ -1,4 +1,5 @@
 <!doctype html>
+<?php session_start()?>
 <html class="no-js" lang="fr">
 
 <head>
@@ -92,14 +93,14 @@
                             </div> <!-- navbar collapse -->
 
 
-                            <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
-                            <?php if (isset($_SESSION['prenom'])): ?>
-                                    <p>Hello </p>
-                                    <a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>
-                            <?php else: ?>
-                                    <button style="margin-left: 3%;" type="button" onclick="location.href='login.php'" class="btn btn-success">Connexion</button>
-                                    <button style="margin-left: 3%;" type="button" onclick="location.href='register.php'" class="btn btn-warning">Inscription</button>
-                            <?php endif; ?>
+                            <?php
+                            if (isset($_SESSION['email'])){
+                                print ('<a href="logout.php"> <button style="margin-left: 3%;" type="button" class="btn btn-success">Déconnexion</button> </a>');}
+                            else
+                            {print ("<button style=\"margin-left: 3%;\" type=\"button\" onclick=\"location.href='login.php'\" class=\"btn btn-success\">Connexion</button>
+                                <button style=\"margin-left: 3%;\" type=\"button\" onclick=\"location.href='register.php'\" class=\"btn btn-warning\">Inscription</button>");
+                            }
+                            ?>
 
 
                         </nav> <!-- navbar -->
@@ -118,7 +119,7 @@
                             <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Serious Game à destination de tous, rendez-vous juste en dessous.</p>
                             <a href="jeu" style="height: 100%; width: 300px" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Lancer GreenCity - Le Jeu</a>
                             <br>
-                            <a href="scores.php" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s"> Voir le tableau des scores</a>
+                            <a href="jeu" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s"> Voir le tableau des scores</a>
                         </div> <!-- header hero content -->
                     </div>
                 </div> <!-- row -->
