@@ -1,5 +1,5 @@
 <?php
-require_once "db_connnection.php";
+require_once "jeu/include/bdd.php";
 session_start();
 //connect to database
 if(isset($_POST['register_btn']))
