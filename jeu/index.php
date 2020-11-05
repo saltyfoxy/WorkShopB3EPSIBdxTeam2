@@ -1,5 +1,11 @@
 <?php
     include("include/bdd.php");
+    session_start();
+    if(  !isset($_SESSION['email']) )
+    {
+        header("location:connexion-inscription.php");
+        die();
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="fr">

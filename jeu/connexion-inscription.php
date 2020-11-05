@@ -1,6 +1,7 @@
 <?php
     include("include/bdd.php");
     include("include/login.php");
+    include("include/register.php");
 ?>
 <!doctype html>
 <html class="no-js" lang="fr">
@@ -67,75 +68,100 @@
                 <div class="mt-150 sak2 sak background" id="bg_ville" style="border-radius: 50px;border:3px solid #d8d0b9; height: 700px">
                     <div class="p-5 d-flex align-items-center justify-content-around filtre-sak" style="border-radius: 45px;border:20px solid #fff; background-color: rgba(50,50,50,0.3); p-5; width: 100%; height: 100%">
 
+                        <!--====== START : FROM CONNEXION ======-->
                             <form method="get" id="connexion" class="col-8 d-none">
                                 <h3 class="text-center text-light m-4">Connectez-vous</h3>
                                 <p class="text-center text-light m-4">Connectez-vous pour avoir accès au jeu</p>
                                 <?php
+                                    //===== Message d'erreur
                                     if(isset($_SESSION['message']))
                                     {
                                         echo "<div class=\"text-danger\">".$_SESSION['message']."</div>";
                                         unset($_SESSION['message']);
                                     }
                                 ?>
-                                <div class="form-group">
+                                <div class="form-group"><!--====== E-mail ======-->
                                     <input type="email" name="email" class="form-control" placeholder="Entrez vôtre e-mail">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group"><!--====== Mot de passe ======-->
                                     <input type="password" name="password" class="form-control" placeholder="mot de passe">
                                 </div>
-                                <div class="row justify-content-around" >
+                                <div class="row justify-content-around" ><!--====== Bouton connexion ======-->
                                     <button type="submit" name="login_btn" value="Log In" class="btn btn-primary btn-lg shadow-lg rounded-pill">se connecter</button>
                                 </div>
-                                <div class="row justify-content-around" >
-                                    <a class="text-dark" href="#inscription" onclick="affiche_inscription()">s'inscrire</a>
+                                <div class="row justify-content-around mt-3" ><!--====== Bouton formulaire inscription ======-->
+                                    <button class="btn btn-sm btn-outline-dark" onclick="affiche_inscription()">s'inscrire</button>
                                 </div>
                             </form>
+                        <!--====== END : FROM CONNEXION ======-->
 
+                        <!--====== START : FROM INSCRIPTION ======-->
                             <form method="post" id="inscription" class="col-8 d-none">
                                 <h3 class="text-center text-light m-4">Inscrivez-vous</h3>
                                 <p class="text-center text-light m-4">Inscrivez-vous dès maintenant !</p>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" aria-describedby="nom" placeholder="nom">
+                                <?php
+                                //===== Message d'erreur
+                                if(isset($_SESSION['message']))
+                                {
+                                    echo "<div class=\"text-danger\">".$_SESSION['message']."</div>";
+                                    unset($_SESSION['message']);
+                                }
+                                ?>
+                                <div class="form-group"><!--====== Prénom ======-->
+                                    <input type="text" class="form-control" name="prenom" placeholder="Prénom">
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" aria-describedby="prenom" placeholder="prénom">
+                                <div class="form-group"><!--====== Nom ======-->
+                                    <input type="text" class="form-control" name="nom" placeholder="Nom">
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" aria-describedby="email" placeholder="e-mail">
+                                <div class="form-group"><!--====== E-mail ======-->
+                                    <input type="email" class="form-control" name="email" placeholder="E-mail">
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="mot de passe">
+                                <div class="form-group"><!--====== Pays ======-->
+                                    <input type="text" class="form-control" name="pays" placeholder="Pays">
                                 </div>
-                                <div class="row justify-content-around" >
-                                    <button type="submit" class="btn btn-primary btn-lg shadow-lg rounded-pill">s'inscrire</button>
+                                <div class="form-group"><!--====== Ville ======-->
+                                    <input type="text" class="form-control" name="ville" placeholder="Ville">
                                 </div>
-                                <div class="row justify-content-around" >
-                                    <a class="text-dark" href="#connexion" onclick="affiche_connexion()">se connecter</a>
+                                <div class="form-group"><!--====== Code Postal ======-->
+                                    <input type="text" class="form-control" name="code_postal" placeholder="Code Postal">
+                                </div>
+                                <div class="form-group"><!--====== Mot de passe ======-->
+                                    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                                </div>
+                                <div class="form-group"><!--====== Mot de passe 2 ======-->
+                                    <input type="password" class="form-control" name="password2" placeholder="Vérification du mot de passe">
+                                </div>
+                                <div class="row justify-content-around" ><!--====== Bouton inscription ======-->
+                                    <button type="submit" name="register_btn" value="Log In" class="btn btn-primary btn-lg shadow-lg rounded-pill">s'inscrire</button>
+                                </div>
+                                <div class="row justify-content-around mt-1" ><!--====== Bouton formulaire connexion ======-->
+                                    <button class="btn btn-sm btn-outline-dark" onclick="affiche_connexion()">se connecter</button>
                                 </div>
                             </form>
+                        <!--====== END : FROM INSCRIPTION ======-->
 
-                            <!--====== JAVASCRIPT ======-->
-                            <script type="application/javascript">
-                                //===== Initialisation des variable
-                                var connexion   = document.getElementById('connexion');
-                                var inscription = document.getElementById('inscription');
+                        <!--====== JAVASCRIPT ======-->
+                        <script type="application/javascript">
+                            //===== Initialisation des variable
+                            var connexion   = document.getElementById('connexion');
+                            var inscription = document.getElementById('inscription');
 
+                            connexion.classList.remove('d-none');
+
+                            //===== Affiche connexion
+                            function affiche_connexion()
+                            {
+                                inscription.classList.add('d-none');
                                 connexion.classList.remove('d-none');
+                            }
 
-                                //===== Affiche connexion
-                                function affiche_connexion()
-                                {
-                                    inscription.classList.add('d-none');
-                                    connexion.classList.remove('d-none');
-                                }
-
-                                //===== Affiche le choix de niveau
-                                function affiche_inscription()
-                                {
-                                    connexion.classList.add('d-none');
-                                    inscription.classList.remove('d-none');
-                                }
-                            </script>
+                            //===== Affiche le choix de niveau
+                            function affiche_inscription()
+                            {
+                                connexion.classList.add('d-none');
+                                inscription.classList.remove('d-none');
+                            }
+                        </script>
 
                     </div>
                 </div>
